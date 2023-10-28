@@ -6,6 +6,12 @@ pipeline {
         stage('build') {
             steps {
                 sh 'python --version'
+                sh '''
+                      git clone https://github.com/sameeriron42/two-way-integration.git
+                        cd two-way-integration
+                        pip install -r requirements.txt
+                        export PYTHONPATH="${PYTHONPATH}:./app"
+                '''
             }
         }
     }
